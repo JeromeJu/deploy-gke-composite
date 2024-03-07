@@ -1,0 +1,67 @@
+name: Deploy GKE
+inputs:
+  image:
+    description: |-
+      Image to be deployed
+    required: true
+
+  app_name:
+    description: |-
+      Application name of the Kubernetes deployment
+    required: true
+
+  region:
+    description: |-
+      Region/zone of GKE cluster to deploy to.
+    required: true
+
+  cluster_name:
+    description: |-
+      Name of GKE cluster to deploy to.
+    required: true
+
+  project_id:
+    description: |-
+      Project of GKE cluster to deploy to.
+    required: true
+
+  namespace:
+    description: |-
+      Namespace of GKE cluster to deploy to.
+      If not provided, it will not be passed to the binary. 
+    required: true
+
+  expose:
+    description: |-
+      The port provided will be used to expose the deployed workload object (i.e., port and targetPort will be set to the value provided in this flag). 
+      If not provided, it will not be passed to the binary.
+    required: true
+ 
+runs:
+  using: "composite"
+  steps:
+  - name: clone gke-deploy cli
+    uses: actions/checkout@v4
+    with:
+      repository: GoogleCloudPlatform/cloud-builders
+  - name: setup go
+    uses: actions/setup-go@v4
+    with:
+      go-version: "1.19"
+  - name: build gke-deploy go binary
+    run: |
+      cd gke-deploy
+      go build -o gke-deploy
+  - name: auth gcp
+    uses: 'google-github-actions/auth@v2'
+    with:
+      project_id: 'jju-dev'
+      workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
+  - name: auth gke cluster
+    uses: 'google-github-actions/get-gke-credentials@v2'
+    with:
+      cluster_name: 'examples'
+      location: 'us-central1'
+  - name: deploy image
+    run: |
+      ./gke-deploy run -i "$[[ inputs.image ]]" -a "$[[ inputs.app_name ]]" -x "$[[ inputs.expose_port ]]" -c "$[[ inputs.cluster_name ]]" -l "$[[ inputs.region ]]" -p "$[[ inputs.project_id ]]" -n "$[[ inputs.namespace ]]"
