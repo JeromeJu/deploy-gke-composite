@@ -54,6 +54,7 @@ runs:
       go-version: "1.19"
 
   - name: build gke-deploy go binary
+    shell: bash
     run: |
       cd gke-deploy
       go build -o gke-deploy
@@ -72,5 +73,6 @@ runs:
       location: "$[[ inputs.region ]]"
 
   - name: deploy image
+    shell: bash
     run: |
       ./gke-deploy run -i "$[[ inputs.image ]]" -a "$[[ inputs.app_name ]]" -x "$[[ inputs.expose_port ]]" -c "$[[ inputs.cluster_name ]]" -l "$[[ inputs.region ]]" -p "$[[ inputs.project_id ]]" -n "$[[ inputs.namespace ]]"
