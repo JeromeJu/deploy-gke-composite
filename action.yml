@@ -27,7 +27,7 @@ inputs:
 
   namespace:
     description: |-
-      Namespace of GKE cluster to deploy to.
+      Namespace for the GKE cluster to deploy to.
       If not provided, it will not be passed to the binary. 
     required: true
 
