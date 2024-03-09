@@ -59,19 +59,6 @@ runs:
       cd gke-deploy
       go build -o gke-deploy
 
-  - name: auth gcp
-    uses: 'google-github-actions/auth@v2'
-    with:
-      project_id: ${{ inputs.project_id }}
-      workload_identity_provider: ${{ inputs.wif }}
-
-  - name: auth gke cluster
-    uses: 'google-github-actions/get-gke-credentials@v2'
-    with:
-      project_id: ${{ inputs.project_id }}
-      cluster_name: ${{inputs.cluster_name }}
-      location: ${{ inputs.region }}
-
   - name: deploy image
     shell: bash
     run: |
