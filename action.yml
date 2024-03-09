@@ -61,7 +61,6 @@ runs:
     run: |
       echo $GOOGLE_APPLICATION_CREDENTIALS
       pwd
-      sudo cp ./gha-creds-*.json ./gke-deploy
       cd gke-deploy
       echo "$IMAGE"
       ./gke-deploy run -i "$IMAGE" -a "$APP_NAME" -x "$EXPOSE" -c "$CLUSTER_NAME" -l "$REGION" -p "$PROJECT_ID" -n "$NAMESPACE"
