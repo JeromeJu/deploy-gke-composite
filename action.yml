@@ -75,6 +75,8 @@ runs:
   - name: deploy image
     shell: bash
     run: |
+      ls
+      cd gke-deploy
       ./gke-deploy run -i "$IMAGE" -a "$APP_NAME" -x "$EXPOSE" -c "$CLUSTER_NAME" -l "$REGION" -p "$PROJECT_ID" -n "$NAMESPACE"
     env:
       APP_NAME: ${{ inputs.app_name }}
