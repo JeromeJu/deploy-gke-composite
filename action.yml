@@ -69,6 +69,6 @@ runs:
       CLUSTER_NAME: ${{ inputs.cluster_name }}
       EXPOSE: ${{ inputs.expose }}
       IMAGE: ${{ inputs.image }}
-      NAMESPACE: $ {{ inputs.namespace }} 
-      PROJECT_ID: $ {{ inputs.project_id }}
+      NAMESPACE: ${{ inputs.namespace }} 
+      PROJECT_ID: ${{ inputs.project_id }}
       REGION: ${{ inputs.region }}
