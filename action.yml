@@ -56,7 +56,7 @@ runs:
       cd gke-deploy
       go build -o gke-deploy
 
-  - name: deploy images
+  - name: deploy image
     shell: bash
     run: |
       echo $GOOGLE_APPLICATION_CREDENTIALS
