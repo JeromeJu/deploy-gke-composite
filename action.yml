@@ -75,7 +75,7 @@ runs:
   - name: deploy image
     shell: bash
     run: |
-      ls
+      echo $GOOGLE_APPLICATION_CREDENTIALS
       cd gke-deploy
       ./gke-deploy run -i "$IMAGE" -a "$APP_NAME" -x "$EXPOSE" -c "$CLUSTER_NAME" -l "$REGION" -p "$PROJECT_ID" -n "$NAMESPACE"
     env:
@@ -83,6 +83,6 @@ runs:
       CLUSTER_NAME: ${{ inputs.cluster_name }}
       EXPOSE: ${{ inputs.expose }}
       IMAGE: ${{ inputs.image }}
-      NAMESPACE: $ {{ inputs.namespace }}
+      NAMESPACE: $ {{ inputs.namespace }} 
       PROJECT_ID: $ {{ inputs.projec_id }}
       REGION: ${{ inputs.region }}
