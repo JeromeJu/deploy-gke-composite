@@ -63,6 +63,7 @@ runs:
       pwd
       cd gke-deploy
       echo "$IMAGE"
+      export GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS
       ./gke-deploy run -i "$IMAGE" -a "$APP_NAME" -x "$EXPOSE" -c "$CLUSTER_NAME" -l "$REGION" -p "$PROJECT_ID" -n "$NAMESPACE"
     env:
       APP_NAME: ${{ inputs.app_name }}
