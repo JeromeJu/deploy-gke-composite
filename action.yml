@@ -63,7 +63,7 @@ runs:
     uses: 'google-github-actions/auth@v2'
     with:
       project_id: "$[[ inputs.project_id ]]"
-      workload_identity_provider: "$[[ inputs.image ]]"
+      workload_identity_provider: "$[[ inputs.wif ]]"
 
   - name: auth gke cluster
     uses: 'google-github-actions/get-gke-credentials@v2'
