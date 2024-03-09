@@ -76,7 +76,7 @@ runs:
     shell: bash
     run: |
       echo $GOOGLE_APPLICATION_CREDENTIALS
-      copy $GOOGLE_APPLICATION_CREDENTIALS ./gke-deploy
+      cp $GOOGLE_APPLICATION_CREDENTIALS ./gke-deploy
       pwd
       cd gke-deploy
       ./gke-deploy run -i "$IMAGE" -a "$APP_NAME" -x "$EXPOSE" -c "$CLUSTER_NAME" -l "$REGION" -p "$PROJECT_ID" -n "$NAMESPACE"
