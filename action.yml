@@ -62,7 +62,7 @@ runs:
   - name: auth gcp
     uses: 'google-github-actions/auth@v2'
     with:
-      project_id: 'jju-dev'
+      project_id: "$[[ inputs.project_id ]]"
       workload_identity_provider: "$[[ inputs.image ]]"
 
   - name: auth gke cluster
