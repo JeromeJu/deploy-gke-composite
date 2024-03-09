@@ -37,9 +37,6 @@ inputs:
       If not provided, it will not be passed to the binary.
     required: true
 
-  wif:
-    reqiured: true
-
 runs:
   using: "composite"
   steps:
@@ -72,5 +69,5 @@ runs:
       EXPOSE: ${{ inputs.expose }}
       IMAGE: ${{ inputs.image }}
       NAMESPACE: $ {{ inputs.namespace }} 
-      PROJECT_ID: $ {{ inputs.projec_id }}
+      PROJECT_ID: $ {{ inputs.project_id }}
       REGION: ${{ inputs.region }}
