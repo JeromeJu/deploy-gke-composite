@@ -72,6 +72,7 @@ runs:
     shell: bash
     run: |
       echo "$KUBECONFIG"
+      cat $KUBECONFIG
 
       cd test/gke-deploy
 
