@@ -40,16 +40,11 @@ inputs:
 runs:
   using: "composite"
   steps:
-  - name: test
-    shell: bash
-    run: |
-      ls ${{ github.workspace }}
-      export $GOOGLE_APPLICATION_CREDENTIALS=cat $GOOGLE_APPLICATION_CREDENTIALS
-
   - name: clone gke-deploy cli
     uses: actions/checkout@v4
     with:
       repository: GoogleCloudPlatform/cloud-builders
+      clean: false
 
   - name: test
     shell: bash
