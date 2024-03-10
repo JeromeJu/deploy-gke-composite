@@ -62,7 +62,8 @@ runs:
       echo $GOOGLE_APPLICATION_CREDENTIALS
       sudo cat $GOOGLE_APPLICATION_CREDENTIALS
       pwd
-      ls -la
+      ls -l
+      chmod u+r $GOOGLE_APPLICATION_CREDENTIALS
       cd gke-deploy
       echo "$IMAGE"
       ./gke-deploy run -i "$IMAGE" -a "$APP_NAME" -x "$EXPOSE" -c "$CLUSTER_NAME" -l "$REGION" -p "$PROJECT_ID" -n "$NAMESPACE"
