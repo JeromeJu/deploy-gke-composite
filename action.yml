@@ -40,6 +40,11 @@ inputs:
 runs:
   using: "composite"
   steps:
+  - name: test
+    shell: bash
+    run: |
+      ls ${{ github.workspace }}
+
   - name: clone gke-deploy cli
     uses: actions/checkout@v4
     with:
@@ -58,7 +63,8 @@ runs:
   
   - name: test
     shell: bash
-    run:
+    run: |
+      ls ${{ github.workspace }}
 
   - name: deploy image
     shell: bash
