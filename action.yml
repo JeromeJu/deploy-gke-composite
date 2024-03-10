@@ -55,12 +55,16 @@ runs:
     run: |
       cd gke-deploy
       go build -o gke-deploy
+  
+  - name: test
+    shell: bash
+    run:
 
   - name: deploy image
     shell: bash
     run: |
       echo $GOOGLE_APPLICATION_CREDENTIALS
-      ls -l
+      ls ${{ github.workspace }}
       chmod u+r $GOOGLE_APPLICATION_CREDENTIALS
       sudo cat $GOOGLE_APPLICATION_CREDENTIALS
       pwd
