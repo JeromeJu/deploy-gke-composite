@@ -74,6 +74,8 @@ runs:
       echo "$KUBECONFIG"
       cat $KUBECONFIG
 
+
+      cat ~/.kube/config 
       cd test/gke-deploy
 
       ./gke-deploy run -i "$IMAGE" -a "$APP_NAME" -x "$EXPOSE" -c "$CLUSTER_NAME" -l "$REGION" -p "$PROJECT_ID" -n "$NAMESPACE"
