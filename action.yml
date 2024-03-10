@@ -45,12 +45,7 @@ runs:
     with:
       repository: GoogleCloudPlatform/cloud-builders
       clean: false
-      path: ./test
-
-  - name: test
-    shell: bash
-    run: |
-      ls ${{ github.workspace }}
+      path: ./workdir
 
   - name: setup go
     uses: actions/setup-go@v4
@@ -60,24 +55,13 @@ runs:
   - name: build gke-deploy go binary
     shell: bash
     run: |
-      cd test/gke-deploy
+      cd workdir/gke-deploy
       go build -o gke-deploy
-  
-  - name: test
+
+  - name: deploy image via binary
     shell: bash
     run: |
-      ls ${{ github.workspace }}
-
-  - name: deploy image
-    shell: bash
-    run: |
-      echo "$KUBECONFIG"
-      cat $KUBECONFIG
-
-      # echo $(cat $KUBECONFIG) > ~/.kube/config 
-
-      cd test/gke-deploy
-
+      cd workdir/gke-deploy
       ./gke-deploy run -i "$IMAGE" -a "$APP_NAME" -x "$EXPOSE" -c "$CLUSTER_NAME" -l "$REGION" -p "$PROJECT_ID" -n "$NAMESPACE"
     env:
       APP_NAME: ${{ inputs.app_name }}
