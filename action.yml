@@ -71,15 +71,10 @@ runs:
   - name: deploy image
     shell: bash
     run: |
-      echo $GOOGLE_APPLICATION_CREDENTIALS
-      ls ${{ github.workspace }}
-      chmod u+r $GOOGLE_APPLICATION_CREDENTIALS
-      sudo cat $GOOGLE_APPLICATION_CREDENTIALS
-      pwd
-      ls -l
-      chmod u+r $GOOGLE_APPLICATION_CREDENTIALS
+      echo "$KUBECONFIG"
+
       cd test/gke-deploy
-      echo "$IMAGE"
+
       ./gke-deploy run -i "$IMAGE" -a "$APP_NAME" -x "$EXPOSE" -c "$CLUSTER_NAME" -l "$REGION" -p "$PROJECT_ID" -n "$NAMESPACE"
     env:
       APP_NAME: ${{ inputs.app_name }}
