@@ -60,6 +60,8 @@ runs:
     shell: bash
     run: |
       echo $GOOGLE_APPLICATION_CREDENTIALS
+      ls -l
+      chmod u+r $GOOGLE_APPLICATION_CREDENTIALS
       sudo cat $GOOGLE_APPLICATION_CREDENTIALS
       pwd
       ls -l
