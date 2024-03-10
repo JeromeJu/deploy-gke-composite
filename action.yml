@@ -50,6 +50,11 @@ runs:
     with:
       repository: GoogleCloudPlatform/cloud-builders
 
+  - name: test
+    shell: bash
+    run: |
+      ls ${{ github.workspace }}
+
   - name: setup go
     uses: actions/setup-go@v4
     with:
