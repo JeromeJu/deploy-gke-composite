@@ -74,7 +74,7 @@ runs:
       echo "$KUBECONFIG"
       cat $KUBECONFIG
 
-      echo $(cat $KUBECONFIG) > ~/.kube/config 
+      # echo $(cat $KUBECONFIG) > ~/.kube/config 
 
       cd test/gke-deploy
 
