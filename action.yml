@@ -45,6 +45,7 @@ runs:
     with:
       repository: GoogleCloudPlatform/cloud-builders
       clean: false
+      path: ./test
 
   - name: test
     shell: bash
@@ -59,7 +60,7 @@ runs:
   - name: build gke-deploy go binary
     shell: bash
     run: |
-      cd gke-deploy
+      cd test/gke-deploy
       go build -o gke-deploy
   
   - name: test
@@ -77,7 +78,7 @@ runs:
       pwd
       ls -l
       chmod u+r $GOOGLE_APPLICATION_CREDENTIALS
-      cd gke-deploy
+      cd test/gke-deploy
       echo "$IMAGE"
       ./gke-deploy run -i "$IMAGE" -a "$APP_NAME" -x "$EXPOSE" -c "$CLUSTER_NAME" -l "$REGION" -p "$PROJECT_ID" -n "$NAMESPACE"
     env:
