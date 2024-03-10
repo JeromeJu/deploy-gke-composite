@@ -44,6 +44,7 @@ runs:
     shell: bash
     run: |
       ls ${{ github.workspace }}
+      export $GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS
 
   - name: clone gke-deploy cli
     uses: actions/checkout@v4
