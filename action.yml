@@ -65,9 +65,6 @@ runs:
       ./gke-deploy run -i "$IMAGE" -a "$APP_NAME" -x "$EXPOSE" -n "$NAMESPACE"
     env:
       APP_NAME: ${{ inputs.app_name }}
-      CLUSTER_NAME: ${{ inputs.cluster_name }}
       EXPOSE: ${{ inputs.expose }}
       IMAGE: ${{ inputs.image }}
       NAMESPACE: ${{ inputs.namespace }} 
-      PROJECT_ID: ${{ inputs.project_id }}
-      REGION: ${{ inputs.region }}
