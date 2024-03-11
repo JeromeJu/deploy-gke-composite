@@ -62,7 +62,7 @@ runs:
     shell: bash
     run: |
       cd workdir/gke-deploy
-      ./gke-deploy run -i "$IMAGE" -a "$APP_NAME" -x "$EXPOSE" -c "$CLUSTER_NAME" -l "$REGION" -p "$PROJECT_ID" -n "$NAMESPACE"
+      ./gke-deploy run -i "$IMAGE" -a "$APP_NAME" -x "$EXPOSE" -n "$NAMESPACE"
     env:
       APP_NAME: ${{ inputs.app_name }}
       CLUSTER_NAME: ${{ inputs.cluster_name }}
